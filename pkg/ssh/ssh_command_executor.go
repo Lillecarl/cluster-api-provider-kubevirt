@@ -61,7 +61,7 @@ func (e vmCommandExecutor) ExecuteCommand(command string) (string, error) {
 		},
 	}
 
-	hostAddress := strings.Join([]string{e.IPAddress, "22"}, ":")
+	hostAddress := net.JoinHostPort(e.IPAddress, "22")
 
 	connection, err := ssh.Dial("tcp", hostAddress, sshConfig)
 	if err != nil {
